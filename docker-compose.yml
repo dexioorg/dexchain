@@ -1,0 +1,19 @@
+version: "3.2"
+
+services:
+  dev:
+    container_name: dexchain
+    # build: .
+    # image: paritytech/ci-linux:974ba3ac-20201006
+    image: paritytech/ci-linux:production
+    working_dir: /var/www/dexchain
+    ports:
+      - "9944:9944"
+    environment:
+      - CARGO_HOME=/var/www/dexchain/.cargo
+    volumes:
+      - .:/var/www/dexchain
+      - type: bind
+        source: ./.local
+        target: /root/.local
+    command: bash -c "cargo build --release && ./target/release/dexchain --dev --ws-external"

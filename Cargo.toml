@@ -1,0 +1,11 @@
+[workspace]
+members = [
+	"node",
+	"primitives",
+	"runtime",
+	"pallets/*",
+]
+
+[patch."https://github.com/dexioorg/frontier"]
+pallet-ethereum = { path = "./pallets/ethereum" }
+

@@ -1,0 +1,50 @@
+[package]
+authors = ["Dexchain Technologies <dex.io>"]
+edition = "2018"
+license = "GPL-3.0-or-later"
+name = "randomness-precompiles"
+version = "1.0.0"
+
+[dependencies]
+serde = { version = "1.0.124", optional = true, features = ["derive"] }
+codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false }
+evm = { version = "0.25.0", features = ["with-codec"], default-features = false }
+num_enum = { version = "0.5.3", default-features = false }
+log = "0.4"
+
+frame-support = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "frontier" }
+frame-system = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "frontier" }
+sp-std = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "frontier" }
+sp-core = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "frontier" }
+sp-io = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "frontier" }
+sp-runtime = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "frontier" }
+pallet-timestamp = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "frontier" }
+pallet-evm = { default-features = false, git = "https://github.com/dexioorg/frontier", branch = "master" }
+
+primitives = { package = "dexchain-primitives", path = "../../primitives", default-features = false }
+precompile-utils = { path = "../utils", default-features = false }
+
+[dev-dependencies]
+hex = "0.4.2"
+sha3 = "0.9"
+pallet-balances = { git = "https://github.com/paritytech/substrate", branch = "frontier" }
+frame-support-test = { git = "https://github.com/paritytech/substrate", branch = "frontier" }
+
+[features]
+default = ["std"]
+std = [
+    "serde",
+    "codec/std",
+    "frame-support/std",
+    "frame-system/std",
+    "sp-core/std",
+    "sp-io/std",
+    "sp-runtime/std",
+    "primitives/std",
+    "pallet-evm/std",
+    "evm/std",
+    "sp-std/std",
+    "precompile-utils/std",
+    "num_enum/std",
+    "pallet-timestamp/std",
+]

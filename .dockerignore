@@ -1,0 +1,9 @@
+**/target/
+Dockerfile
+**/*.rs.bk
+.DS_Store
+.cargo
+.local
+.idea/*
+.vscode/*
+**/docs/
